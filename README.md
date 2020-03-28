@@ -147,8 +147,24 @@ multiple expressions.
 2. Author a grammar as illustrated above.  Note your grammar *must* accept all 9 sample programs given.
 
   > You need to complete `src/ProgLang.g4`.
+  
+3. Modify the grammar with SDD _attributes_ and _actions_ so that the parser will
+evaluate the expressions.  At the top level, the _program_ target should also print the expression
+as a string, and its evaluated result.
 
 3. Make sure you can pass all the tests.
 
   > `make check` will perform verification against all test cases.  The test programs are provided
   in `tests/*.proglang`.
+
+# Helpers
+
+The Makefile given comes with helper facilities:
+
+- `make check` checks against **all** test cases.  You may want to run individual test cases as you tackle
+with the grammar.
+
+- `make run file=tests/1.proglang` will run only the file specified by `file=...`.
+
+- `make debug file=tests/1.proglang` will run the file specified, and it will print out the parse tree so you can
+examine how the parser interpretes the program.
