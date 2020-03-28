@@ -31,6 +31,37 @@ We can perform arithmetics using prefix notation:
 (/ (* pi (* (+ r 20) (- r 20))) 2)
 ```
 
-This is the expression corresponding to:
+This is the expression corresponding to: `(pi * ((r + 20) * (r - 20)) / 2)`
 
-$$ \frac{\pi (r + 20) (r - 20)}{2} $$
+### Code Block
+
+A code block is a sequence of expressions that **share** a common context.
+
+```
+{
+  (i = 10)
+  (j = 20)
+  (+ i j)
+}
+```
+
+This should evaluate to **30**, as the code block evaluates to the last expression in the block.
+
+### Condition and Branching
+
+We support conditions such as follows:
+
+```
+(< 1 2)
+(<= 1 2)
+(> 10 10)
+(and (< 1 2) (> 2 1))
+```
+
+Conditions allow us to expression branching expressions:
+
+```
+(if (< r 10) 100 else 200
+```
+
+This expression is that if `r` is less than 10, then it should be 100, otherwise 200.
