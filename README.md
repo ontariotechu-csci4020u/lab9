@@ -61,7 +61,94 @@ We support conditions such as follows:
 Conditions allow us to expression branching expressions:
 
 ```
-(if (< r 10) 100 else 200
+(if (< r 10) 
+  100
+  200)
 ```
 
 This expression is that if `r` is less than 10, then it should be 100, otherwise 200.
+
+Since code blocks are expressions, they can be used freely as part of the if-else construct:
+
+```
+(if (< r 10) {
+  (pi = 3.1415)
+  (* pi (* r r))
+} {
+  200
+})
+```
+
+### While Loop
+
+Here is an example of the while-loop:
+
+```
+{
+  (i = 0)
+  (sum = 0)
+  (while (< i 10) {
+    (sum = (+ sum i))
+    (i = (+ i 1))
+  })
+}
+```
+
+It computes the sum of `0 + 1 + 2 + ... + 9`.
+
+### Function Declaration and Invocation
+
+Here is an example how functions can be declared and used.
+
+```
+{
+  (def add [i j] (+ i j))
+  (def double [i] (* 2 i))
+  
+  (add (double 10) (double 20))
+}
+```
+
+Again, complex functions might use blocks as the body.  Here is a program that computes
+the square root using the [Babylonian method](https://blogs.sas.com/content/iml/2016/05/16/babylonian-square-roots.html).
+
+```
+{
+  (epsilon = 0.001)
+
+  (def abs [x] (if (< x 0) (- 0 x) x))
+
+  (def avg [x y] (/ (+ x y) 2))
+
+  (def sqrt [x] {
+    (y = x)
+    (y2 = (* y y))
+    (while (> (abs (- x y2)) epsilon) {
+        (y = (avg y (/ x y)))
+        (y2 = (* y y))
+    })
+    y
+  })
+  
+  ...
+}
+```
+
+Note that while `abs` and `avg` are simple functions, `sqrt` uses a code block as its body as it requires
+multiple expressions.
+
+# Your Tasks
+
+1. Complete the classes required in Lab 8.
+
+  > The templates found in `src/numlang/*.java` as _unimplemented_.  You should copy the full implementation
+  from **Lab 8** to `src/numlang/`.
+  
+2. Author a grammar as illustrated above.  Note your grammar *must* accept all 9 sample programs given.
+
+  > You need to complete `src/ProgLang.g4`.
+
+3. Make sure you can pass all the tests.
+
+  > `make check` will perform verification against all test cases.  The test programs are provided
+  in `tests/*.proglang`.
