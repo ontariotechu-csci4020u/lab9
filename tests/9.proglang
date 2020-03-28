@@ -1,0 +1,19 @@
+{
+  (epsilon = 0.001)
+
+  (def abs [x] (if (< x 0) (- 0 x) x))
+
+  (def avg [x y] (/ (+ x y) 2))
+
+  (def sqrt [x] {
+    (y = x)
+    (y2 = (* y y))
+    (while (> (abs (- x y2)) epsilon) {
+        (y = (avg y (/ x y)))
+        (y2 = (* y y))
+    })
+    y
+  })
+
+  (sqrt 16)
+}

@@ -1,0 +1,49 @@
+{:plan
+ [{:title "Lab8", :default {:check :all}}
+  (:check :Check "tests/1.proglang")
+  (:check :Check "tests/2.proglang")
+  (:check :Check "tests/3.proglang")
+  (:check :Check "tests/4.proglang")
+  (:check :Check "tests/5.proglang")
+  (:check :Check "tests/6.proglang")
+  (:check :Check "tests/7.proglang")
+  (:check :Check "tests/8.proglang")
+  (:check :Check "tests/9.proglang")],
+ :results
+ [{:return nil,
+   :duration 63,
+   :stdout
+   "(mult (mult 3.14 (plus 10.00 10.00)) (plus 20.00 20.00))\n=> 2513.20\n"}
+  {:return nil,
+   :duration 4,
+   :stdout
+   "{\npi = 3.14\nr1 = 10.00\nr2 = 20.00\nr = (plus r1 r2)\n(mult pi (mult r r))\n}\n=> 2827.35\n"}
+  {:return nil,
+   :duration 2,
+   :stdout
+   "{\nif (lt 1.00 2.00) then -1.00 else 1.00\nif (gt 1.00 2.00) then -1.00 else 1.00\n}\n=> 1.00\n"}
+  {:return nil,
+   :duration 2,
+   :stdout
+   "{\ni = 10.00\nj = 0.00\nwhile (gt i 0.00) {\ni = (sub i 1.00)\nj = (plus j i)\n}\nj\n}\n=> 45.00\n"}
+  {:return nil,
+   :duration 3,
+   :stdout
+   "{\ntotal = 1.00\ni = 0.00\nwhile (lt i 10.00) {\ntotal = (mult 2.00 total)\ni = (plus i 1.00)\n}\ntotal\n}\n=> 1024.00\n"}
+  {:return nil,
+   :duration 3,
+   :stdout
+   "{\nf(i,j)(mult i j)\ng(i,j)(plus i j)\nf(10.00,g(10.00,10.00))\n}\n=> 200.00\n"}
+  {:return nil,
+   :duration 1,
+   :stdout
+   "{\nfactorial(n){\nresult = 1.00\ni = 1.00\nwhile (le i n) {\nresult = (mult result i)\ni = (plus i 1.00)\n}\nresult\n}\nfactorial(5.00)\n}\n=> 120.00\n"}
+  {:return nil,
+   :duration 1,
+   :stdout
+   "{\nfactorial(n)if (lt n 2.00) then 1.00 else (mult n factorial((sub n 1.00)))\nfactorial(5.00)\n}\n=> 120.00\n"}
+  {:return nil,
+   :duration 3,
+   :stdout
+   "{\nepsilon = 0.00\nabs(x)if (lt x 0.00) then (sub 0.00 x) else x\navg(x,y)(div (plus x y) 2.00)\nsqrt(x){\ny = x\ny2 = (mult y y)\nwhile (gt abs((sub x y2)) epsilon) {\ny = avg(y,(div x y))\ny2 = (mult y y)\n}\ny\n}\nsqrt(16.00)\n}\n=> 4.00\n"}],
+ :version "1.0"}
