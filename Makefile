@@ -20,8 +20,6 @@ clean:
 	rm -rf target
 	rm -f src/ProgLang*.java src/*.interp src/*.tokens
 
-drive:
-	$(jdriver) \
-		:drive plan-v2.edn expected.edn \
-		:testdrive expected.edn output.edn \
-		:report output.edn report.edn
+check:
+	$(jdriver) :testdrive expected.edn output.edn > /dev/null
+	$(jdriver) :report output.edn report.edn
